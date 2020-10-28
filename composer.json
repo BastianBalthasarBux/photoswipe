@@ -42,7 +42,8 @@
   },
   "scripts": {
     "post-autoload-dump": [
-      "TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
+      "mkdir -p .Build/Web/typo3conf/ext/",
+      "[ -L .Build/Web/typo3conf/ext/photoswipe ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/photoswipe"
     ]
   },
   "extra": {
