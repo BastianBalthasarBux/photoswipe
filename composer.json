@@ -1,0 +1,55 @@
+{
+  "name": "tei/photoswipe",
+  "type": "typo3-cms-extension",
+  "description": "TYPO3 PhotoSwipe-Plugin for native image-enlargement",
+  "keywords": [
+    "TYPO3",
+    "extension",
+    "photoswipe",
+    "lightbox",
+    "image",
+    "zoom"
+  ],
+  "homepage": "https://docs.typo3.org/typo3cms/extensions/photoswipe/",
+  "authors": [
+    {
+      "name": "Tobias Eichelberger",
+      "role": "Developer"
+    },
+    {
+      "name": "Natascha Becker",
+      "role": "Developer"
+    }
+  ],
+  "license": [
+    "GPL-2.0-or-later"
+  ],
+  "require": {
+    "typo3/cms-core": "^9.5.0 || ^10.4.99"
+  },
+  "autoload": {
+    "psr-4": {
+      "tei\\photoswipe\\": "Classes"
+    }
+  },
+  "replace": {
+    "photoswipe": "self.version",
+    "typo3-ter/photoswipe": "self.version"
+  },
+  "config": {
+    "vendor-dir": ".Build/vendor",
+    "bin-dir": ".Build/bin"
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
+    ]
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "news",
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": ".Build/Web"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+# ==============================================
+# EXT:photoswipe - settings & html
+# ==============================================
+page = PAGE
+page {
+    typeNum = 0
+
+    includeCSSLibs {
+        cssPhotoswipe = {$plugin.tx_photoswipe.settings.cssPhotoswipe}
+        cssPhotoswipeSkin = {$plugin.tx_photoswipe.settings.cssPhotoswipeSkin}
+    }
+
+    includeJSFooterlibs {
+        jsPhotoswipe = {$plugin.tx_photoswipe.settings.jsPhotoswipe}
+        jsPhotoswipeUi = {$plugin.tx_photoswipe.settings.jsPhotoswipeUi}
+        jsPhotoswipeInit = {$plugin.tx_photoswipe.settings.jsPhotoswipeInit}
+    }
+
+    # write photoswipe html template in html-body
+    99 = FLUIDTEMPLATE
+    99 {
+        layoutRootPaths {
+            0 = EXT:photoswipe/Resources/Private/Layouts
+            1 = {$plugin.tx_photoswipe.view.layoutRootPath}
+        }
+        templateName = PhotoSwipe
+        templateRootPaths {
+            0 = EXT:photoswipe/Resources/Private/Templates
+            1 = {$plugin.tx_photoswipe.view.templateRootPath}
+        }
+        settings {
+            shareButton = {$plugin.tx_photoswipe.settings.shareButton}
+        }
+    }
+}
+
+# add data-size attr to image-link
+lib.contentElement.settings.media.popup.linkParams{
+    ATagParams.dataWrap = class="{$styles.content.textmedia.linkWrap.lightboxCssClass}" rel="{$styles.content.textmedia.linkWrap.lightboxRelAttribute}" data-size="{file:current:width}x{file:current:height}"
+}
+
+
