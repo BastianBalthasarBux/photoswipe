@@ -1,4 +1,4 @@
-# TYPO3 CMS extension "jh_photoswipe"
+# TYPO3 CMS extension "photoswipe"
 
 **Extension key:**
 photoswipe
@@ -16,7 +16,7 @@ Adds the [photoswipe.com](http://photoswipe.com/) JavaScript plugin (version 4.1
 gallery, photoswipe, lightbox, zoom
 
 **Copyright:**
-2020 
+2020
 
 **Author:**
 Tobias Eichelberger
@@ -45,7 +45,7 @@ The content of this document is related to TYPO3, a GNU/GPL CMS/Framework availa
 
 ## Configuration
 You can overwrite all files in the Constant Editor. Besides that you will find a checkbox to
-enable a Share-Button for social media. 
+enable a Share-Button for social media.
 Please not, that the extension itself uses page.99 to add its html template at the bottom of the page.
 It also adds a parameter to TYPO3's media link in TypoScript/setup.txt
 ```
