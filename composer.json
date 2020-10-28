@@ -7,13 +7,12 @@
     "extension",
     "photoswipe",
     "lightbox",
-    "image",
-    "zoom"
+    "image zoom"
   ],
-  "homepage": "https://docs.typo3.org/typo3cms/extensions/photoswipe/",
+  "homepage": "https://extensions.typo3.org/extension/photoswipe/",
   "authors": [
     {
-      "name": "Tobias Eichelberger",
+      "name": "Tobias Eichelbegrer",
       "role": "Developer"
     },
     {
@@ -29,12 +28,12 @@
   },
   "autoload": {
     "psr-4": {
-      "tei\\photoswipe\\": "Classes"
+      "Tei\\PhotoSwipe\\": "Classes"
     }
   },
   "replace": {
-    "photoswipe": "self.version",
-    "typo3-ter/photoswipe": "self.version"
+    "cbgooglemaps": "self.version",
+    "typo3-ter/cbgooglemaps": "self.version"
   },
   "config": {
     "vendor-dir": ".Build/vendor",
@@ -48,7 +47,7 @@
   },
   "extra": {
     "typo3/cms": {
-      "extension-key": "news",
+      "extension-key": "photoswipe",
       "cms-package-dir": "{$vendor-dir}/typo3/cms",
       "web-dir": ".Build/Web"
     }
