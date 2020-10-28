@@ -76,7 +76,7 @@ let initPhotoSwipeFromDOM = function (gallerySelector) {
         // find index of clicked item by looping through all child nodes
         // alternatively, you may define index via data- attribute
         let clickedGallery = clickedListItem.parentNode,
-            childNodes = clickedListItem.parentNode.childNodes,
+            childNodes = this.getElementsByTagName("figure"),
             numChildNodes = childNodes.length,
             nodeIndex = 0,
             index;
