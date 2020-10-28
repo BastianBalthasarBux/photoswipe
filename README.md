@@ -39,8 +39,8 @@ The content of this document is related to TYPO3, a GNU/GPL CMS/Framework availa
 3. Configure extension if required (see section below)
 
 #### via Composer
-1. install the extension via composer
-2. Include the static template "PhotoSwipe (jh_photoswipe)"
+1. install the extension via composer: composer require tei/photoswipe
+2. Include the static template "PhotoSwipe (photoswipe)"
 3. Configure extension if required (see section below)
 
 ## Configuration
