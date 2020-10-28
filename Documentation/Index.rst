@@ -43,3 +43,6 @@ ChangeLog
 1.0.0
 =====
 - Initial release of Extension
+1.0.1 -1.0.4
+============
+- Struggling with composer.json
