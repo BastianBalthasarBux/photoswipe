@@ -66,3 +66,4 @@ add arrows in the zoom-view.
 
 - 1.0.0 - Initial release of Extension
 - 1.0.1 - 1.0.4 - struggling with composer.json
+- 1.0.5 - Bugfix: Always opened first image in gallery

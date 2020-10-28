@@ -46,3 +46,6 @@ ChangeLog
 1.0.1 -1.0.4
 ============
 - Struggling with composer.json
+1.0.5
+=====
+- 1.0.5 - Bugfix: Always opened first image in gallery
