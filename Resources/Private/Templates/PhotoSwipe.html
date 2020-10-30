@@ -4,7 +4,7 @@
     <f:layout name="Default"/>
 
     <f:section name="content">
-        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp" id="pswp-wrapper" data-init="{settings.initClasses}" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="pswp__bg"></div>
             <div class="pswp__scroll-wrap">
                 <div class="pswp__container">
@@ -37,9 +37,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                        <div class="pswp__share-tooltip"></div>
-                    </div>
+                    <f:if condition="{settings.shareButton}">
+                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                            <div class="pswp__share-tooltip"></div>
+                        </div>
+                    </f:if>
                     <button class="pswp__button pswp__button--arrow--left"
                             title="{f:translate(key: 'btn.previous', extensionName: 'photoswipe')}">
                     </button>

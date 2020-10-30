@@ -45,9 +45,9 @@ The content of this document is related to TYPO3, a GNU/GPL CMS/Framework availa
 
 ## Configuration
 You can overwrite all files in the Constant Editor. Besides that you will find a checkbox to
-enable a Share-Button for social media.
-Please not, that the extension itself uses page.99 to add its html template at the bottom of the page.
-It also adds a parameter to TYPO3's media link in TypoScript/setup.txt
+enable a share-button for social media and the setting for the css-wrapper to enable photoswipe in it.
+Please note that the extension itself uses TS-setup 'page.99' to add its html-template at the bottom of the page.
+It also adds a parameter 'data-size' in TYPO3's media link in TypoScript/setup.txt
 ```
 # add data-size attr to image-link
 lib.contentElement.settings.media.popup.linkParams{
@@ -56,6 +56,21 @@ lib.contentElement.settings.media.popup.linkParams{
 ```
 You don't have to enable lightbox-features in TYPO3's constant editor. The extension will do this for you.
 
+#### Photoswipe in your HTML:
+The default setting for initializing photoswipe is by TYPO3's default css-class "ce-gallery". You can add your own classes
+in the constant editor. Your HTML hast to look like this:
+```
+<someHtmlEl class="your-wrapper-class">
+    [... code / parent nodes]
+        <figure>
+            <a href="big image" data-size="[width]X[height]">
+                <img rel="potoswipe_[whatever]" [opt: title='used as caption']/>
+            </a>
+            [opt: <figcaption>prefered as caption</figcaption>]
+        </figure>
+    [/... code / parent nodes]
+</someHtmlEl>
+```
 
 ## Usage
 Just use the regular "Enlarge on Click" checkbox in the backend. If you have more than one image, the extension will
@@ -67,3 +82,4 @@ add arrows in the zoom-view.
 - 1.0.0 - Initial release of Extension
 - 1.0.1 - 1.0.4 - struggling with composer.json
 - 1.0.5 - Bugfix: Always opened first image in gallery
+- 1.0.6 - Bugfix: share button, added config for css-wrapper class

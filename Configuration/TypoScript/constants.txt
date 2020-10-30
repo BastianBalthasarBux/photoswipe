@@ -9,6 +9,8 @@ plugin.tx_photoswipe {
     }
 
     settings {
+        # cat=plugin.tx_photoswipe/config; type=string; label=PhotoSwipe css wrapper-classes to be initialized (comma separated)
+        initClasses = ce-gallery
         # cat=plugin.tx_photoswipe/config; type=boolean; label=Show Share Button
         shareButton = true
 

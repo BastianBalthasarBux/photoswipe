@@ -201,6 +201,13 @@ let initPhotoSwipeFromDOM = function (gallerySelector) {
 
 // [ load PHOTO SWIPE ]
 document.addEventListener("DOMContentLoaded", function (event) {
-    initPhotoSwipeFromDOM('.ce-gallery');
+    document.getElementById('pswp-wrapper')
+        .getAttribute('data-init')
+        .split(',')
+        .forEach(function (el) {
+            if (el) {
+                initPhotoSwipeFromDOM('.' + el);
+            }
+        })
 });
 

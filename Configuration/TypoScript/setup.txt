@@ -29,6 +29,7 @@ page {
             1 = {$plugin.tx_photoswipe.view.templateRootPath}
         }
         settings {
+            initClasses = {$plugin.tx_photoswipe.settings.initClasses}
             shareButton = {$plugin.tx_photoswipe.settings.shareButton}
         }
     }

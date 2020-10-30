@@ -28,9 +28,9 @@ Installation via Composer
 Configuration
 =============
 You can overwrite all files in the Constant Editor. Besides that you will find a checkbox to
-enable a Share-Button for social media.
-Please not, that the extension itself uses page.99 to add its html template at the bottom of the page.
-It also adds a parameter to TYPO3's media link in TypoScript/setup.txt
+enable a share-button for social media and the setting for the css-wrapper to enable photoswipe in it.
+Please note that the extension itself uses TS-setup 'page.99' to add its html-template at the bottom of the page.
+It also adds a parameter 'data-size' in TYPO3's media link in TypoScript/setup.txt
 
 Usage
 =====
@@ -48,4 +48,8 @@ ChangeLog
 - Struggling with composer.json
 1.0.5
 =====
-- 1.0.5 - Bugfix: Always opened first image in gallery
+- Bugfix: Always opened first image in gallery
+1.0.6
+=====
+- Bugfix: share button
+- Feature: make css init-wrapper-class configurable
