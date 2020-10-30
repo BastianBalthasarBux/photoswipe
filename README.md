@@ -58,7 +58,7 @@ You don't have to enable lightbox-features in TYPO3's constant editor. The exten
 
 #### Photoswipe in your HTML:
 The default setting for initializing photoswipe is by TYPO3's default css-class "ce-gallery". You can add your own classes
-in the constant editor. Your HTML hast to look like this:
+in the constant editor. Your HTML has to look like this:
 ```
 <someHtmlEl class="your-wrapper-class">
     [... code / parent nodes]

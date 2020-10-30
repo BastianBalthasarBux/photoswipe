@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         .split(',')
         .forEach(function (el) {
             if (el) {
-                initPhotoSwipeFromDOM('.' + el);
+                initPhotoSwipeFromDOM('.' + el.trim());
             }
         })
 });
