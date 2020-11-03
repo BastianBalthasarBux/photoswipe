@@ -2,14 +2,12 @@
   "name": "tei/photoswipe",
   "type": "typo3-cms-extension",
   "description": "TYPO3 PhotoSwipe-Plugin for native image-enlargement",
-  "keywords": [
-    "TYPO3",
-    "extension",
-    "photoswipe",
-    "lightbox",
-    "image zoom"
-  ],
-  "homepage": "https://extensions.typo3.org/extension/photoswipe/",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": "^7.2",
+    "typo3/cms-backend": "^9.5 || ^10.4",
+    "typo3/cms-core": "^9.5 || ^10.4"
+  },
   "authors": [
     {
       "name": "Tobias Eichelbegrer",
@@ -20,36 +18,22 @@
       "role": "Developer"
     }
   ],
-  "license": [
-    "GPL-2.0-or-later"
+  "keywords": [
+    "typo3",
+    "extension",
+    "photoswipe",
+    "lightbox",
+    "image zoom"
   ],
-  "require": {
-    "typo3/cms-core": "^9.5.17 || ^10.4.2"
+  "support": {
+    "issues": "https://github.com/j0nnybrav079/photoswipe/issues"
+  },
+  "replace": {
+    "typo3-ter/photoswipe": "self.version"
   },
   "autoload": {
     "psr-4": {
       "Tei\\PhotoSwipe\\": "Classes"
-    }
-  },
-  "replace": {
-    "photoswipe": "self.version",
-    "typo3-ter/photoswipe": "self.version"
-  },
-  "config": {
-    "vendor-dir": ".Build/vendor",
-    "bin-dir": ".Build/bin"
-  },
-  "scripts": {
-    "post-autoload-dump": [
-      "mkdir -p .Build/Web/typo3conf/ext/",
-      "[ -L .Build/Web/typo3conf/ext/photoswipe ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/photoswipe"
-    ]
-  },
-  "extra": {
-    "typo3/cms": {
-      "extension-key": "photoswipe",
-      "cms-package-dir": "{$vendor-dir}/typo3/cms",
-      "web-dir": ".Build/Web"
     }
   }
 }
