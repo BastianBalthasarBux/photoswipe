@@ -53,3 +53,6 @@ ChangeLog
 =====
 - Bugfix: share button
 - Feature: make css init-wrapper-class configurable
+1.0.7
+=====
+- Bugfix: composer.json for packagist

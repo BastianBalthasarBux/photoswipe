@@ -83,3 +83,4 @@ add arrows in the zoom-view.
 - 1.0.1 - 1.0.4 - struggling with composer.json
 - 1.0.5 - Bugfix: Always opened first image in gallery
 - 1.0.6 - Bugfix: share button, added config for css-wrapper class
+- 1.0.7 - Bugfix: composer.json for packagist
