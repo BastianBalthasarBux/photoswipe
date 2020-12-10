@@ -211,3 +211,51 @@ document.addEventListener("DOMContentLoaded", function (event) {
         })
 });
 
+// Base 64 image preview and lazy load
+document.addEventListener('DOMContentLoaded', function () {
+    let lazyImages = [].slice.call(document.querySelectorAll('img.lazy64'));
+    let lazyBgImages = [].slice.call(document.querySelectorAll('.lazy64bg'));
+
+    if ('IntersectionObserver' in window) {
+
+        // images
+        let lazyImageObserver = new IntersectionObserver(
+            function (entries, observer) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        let lazyImage = entry.target;
+                        lazyImage.src = lazyImage.dataset.src;
+                        lazyImageObserver.unobserve(lazyImage);
+                    }
+                });
+            });
+        lazyImages.forEach(function (lazyImage) {
+            lazyImageObserver.observe(lazyImage);
+        });
+
+        // bg-images
+        let lazyBgImageObserver = new IntersectionObserver(
+            function (entries, observer) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        let lazyBgImage = entry.target;
+                        lazyBgImage.style.backgroundImage = 'url(\'' + lazyBgImage.dataset.src + '\')';
+                        lazyBgImageObserver.unobserve(lazyBgImage);
+                    }
+                });
+            });
+        lazyBgImages.forEach(function (lazyBgImage) {
+            lazyBgImageObserver.observe(lazyBgImage);
+        });
+    } else {
+        // For browsers that don't support IntersectionObserver yet,
+        // load all the images now:
+        lazyImages.forEach(function (lazyImage) {
+            lazyImage.src = lazyImage.dataset.src;
+        });
+        lazyBgImages.forEach(function (lazyBgImage) {
+            lazyBgImage.style.backgroundImage = 'url(\'' + lazyBgImage.dataset.src + '\')';
+        });
+
+    }
+});

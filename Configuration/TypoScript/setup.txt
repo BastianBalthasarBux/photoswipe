@@ -1,6 +1,14 @@
-# ==============================================
+# override fluid_styled_content
+# ======================================================================================================================
+lib.contentElement {
+    templateRootPaths.1 = EXT:photoswipe/Resources/Private/Templates/Fluid/
+    partialRootPaths.1 = EXT:photoswipe/Resources/Private/Partials/Fluid/
+    layoutRootPaths.1 = EXT:photoswipe/Resources/Private/Layouts/Fluid/
+}
+
+
 # EXT:photoswipe - settings & html
-# ==============================================
+# ======================================================================================================================
 page = PAGE
 page {
     typeNum = 0
