@@ -59,4 +59,7 @@ ChangeLog
 1.1.0
 =====
 - Feature: added base64 support for lazy loading. Just use the checkbox "lazy loading" next to "enlarge image".
+1.1.1
+=====
+- Feature: Ready for TYPO3 11
 
