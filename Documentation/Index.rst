@@ -62,4 +62,10 @@ ChangeLog
 1.1.1
 =====
 - Feature: Ready for TYPO3 11
+1.1.2
+=====
+- Bugfix: Composer
+1.1.3
+=====
+- Bugfix: TCA in overrides
 

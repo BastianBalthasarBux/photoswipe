@@ -4,7 +4,7 @@
 photoswipe
 
 **Version:**
-1.0.0
+1.1.3
 
 **Language:**
 en
@@ -86,3 +86,5 @@ add arrows in the zoom-view.
 - 1.0.7 - Bugfix: composer.json for packagist
 - 1.1.0 - Feature: added base64 support for lazy loading. Just use the checkbox "lazy loading" next to "enlarge image".
 - 1.1.1 - Ready for TYPO3 11
+- 1.1.2 - Bugfix: Composer
+- 1.1.3 - Bugfix: TCA in overrides
