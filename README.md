@@ -7,7 +7,7 @@
 photoswipe
 
 **Version:**
-1.2.1
+1.2.2
 
 **Language:**
 en
@@ -92,4 +92,4 @@ add arrows in the zoom-view.
 - 1.1.2 - Bugfix: Composer
 - 1.1.3 - Bugfix: TCA in overrides
 - 1.2.0 - Bugfix: image link with special chars, Feature: new psw-version 4.4.1
-- 1.2.1 - Documentation update
+- 1.2.1 - 1.2.2 Documentation update, version emconf

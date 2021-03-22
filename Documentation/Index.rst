@@ -75,5 +75,8 @@ ChangeLog
 1.2.1
 =====
 - Documentation update
+1.2.2
+=====
+- emonf for TER
 
 
