@@ -48,7 +48,7 @@ class ImageService64
     private function removeExif(string $in, string $out): void
     {
         $buffer_len = 4096;
-        $fd_in = fopen($in, 'rb');
+        $fd_in = fopen(urldecode($in), 'rb');
         $fd_out = fopen($out, 'wb');
         while (($buffer = fread($fd_in, $buffer_len))) {
             //  \xFF\xE1\xHH\xLLExif\x00\x00 - Exif
