@@ -1,16 +1,19 @@
-# TYPO3 CMS extension "photoswipe"
+# TYPO3 photoswipe
+[![Latest Stable Version](https://img.shields.io/packagist/v/tei/photoswipe?style=for-the-badge)](https://packagist.org/packages/tei/photoswipe)
+[![TYPO3](https://img.shields.io/badge/TYPO3-photoswipe-%23f49700?style=for-the-badge)](https://extensions.typo3.org/extension/photoswipe)
+[![License](https://img.shields.io/packagist/l/tei/photoswipe?style=for-the-badge)](https://packagist.org/packages/tei/photoswipe)
 
 **Extension key:**
 photoswipe
 
 **Version:**
-1.1.3
+1.2.1
 
 **Language:**
 en
 
 **Description:**
-Adds the [photoswipe.com](http://photoswipe.com/) JavaScript plugin (version 4.1.3) as default for image enlargement
+Adds the [photoswipe.com](http://photoswipe.com/) JavaScript plugin (version 4.4.1 https://github.com/andi34/PhotoSwipe) as default for image enlargement
 
 **Keywords:**
 gallery, photoswipe, lightbox, zoom
@@ -88,3 +91,5 @@ add arrows in the zoom-view.
 - 1.1.1 - Ready for TYPO3 11
 - 1.1.2 - Bugfix: Composer
 - 1.1.3 - Bugfix: TCA in overrides
+- 1.2.0 - Bugfix: image link with special chars, Feature: new psw-version 4.4.1
+- 1.2.1 - Documentation update

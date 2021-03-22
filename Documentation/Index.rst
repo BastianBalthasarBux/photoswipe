@@ -68,4 +68,12 @@ ChangeLog
 1.1.3
 =====
 - Bugfix: TCA in overrides
+1.2.0
+=====
+- Bugfix: image link with special chars
+- Feature: new psw-version 4.4.1
+1.2.1
+=====
+- Documentation update
+
 
