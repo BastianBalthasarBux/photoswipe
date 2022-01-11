@@ -9,10 +9,14 @@ plugin.tx_photoswipe {
     }
 
     settings {
+        # cat=plugin.tx_photoswipe/config; type=string; label=PhotoSwipe allowed image extensions (comma separated)
+        imageExtensions = jpg,jpeg,png,bmp
         # cat=plugin.tx_photoswipe/config; type=string; label=PhotoSwipe css wrapper-classes to be initialized (comma separated)
         initClasses = ce-gallery
         # cat=plugin.tx_photoswipe/config; type=boolean; label=Show Share Button
         shareButton = true
+        # cat=plugin.tx_photoswipe/config; type=int[1-500]; label=Svg width in px
+        svgWidth= 10
 
         # cat=plugin.tx_photoswipe/file; type=string; label=Path to CSS file
         cssPhotoswipe = EXT:photoswipe/Resources/Public/Css/photoswipe.min.css

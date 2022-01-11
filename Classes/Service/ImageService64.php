@@ -6,39 +6,51 @@ use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Resource\ProcessedFile;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Configuration\FrontendConfigurationManager;
 use TYPO3\CMS\Extbase\Service\ImageService;
 
 class ImageService64
 {
+    protected FrontendConfigurationManager $frontendConfigurationManager;
 
-    /**
-     * @param ProcessedFile $processedImage
-     * @return string
-     */
-    public function getBase64Preview(ProcessedFile $processedImage): string
+    protected array $settings;
+
+    public function injectFrontendConfigurationManager(FrontendConfigurationManager $fcm)
     {
-        $props = $processedImage->getOriginalFile()->getProperties();
-        $svgWidth = 10;
-        $svgHeight = ($props['height'] * $svgWidth) / $props['width'];
-
-        $processingInstructions = [
-            'width' => $svgWidth,
-            'height' => $svgHeight,
-        ];
-        $imageService = $this->getImageService();
-        $processedImageSVG = $imageService->applyProcessingInstructions($processedImage, $processingInstructions);
-
-        $fileLink = Environment::getPublicPath() . $imageService->getImageUri($processedImageSVG);
-        $type = pathinfo($fileLink, PATHINFO_EXTENSION);
-
-        // remove EXIF and get img-data
-        $tmpFileLink = Environment::getPublicPath() . '/fileadmin/_processed_/ps_tmp.' . $type;
-        $this->removeExif($fileLink, $tmpFileLink);
-        $tmpData = file_get_contents($tmpFileLink);
-
-        return 'data:image/' . $type . ';base64,' . base64_encode($tmpData);
+        $this->frontendConfigurationManager = $fcm;
     }
 
+    public function getBase64Preview(ProcessedFile $processedImage): string
+    {
+        $this->settings = $this->frontendConfigurationManager->getTypoScriptSetup()['plugin.']['tx_photoswipe.']['settings.'];
+        $imageExtension = strtolower($processedImage->getExtension());
+        $allowedImageExtensions = explode(',', strtolower($this->settings['imageExtensions']));
+        $svgImage = 'data:image/file-extensions-not-supported;';
+
+        if (in_array($imageExtension, $allowedImageExtensions)) {
+            $props = $processedImage->getOriginalFile()->getProperties();
+            $svgHeight = ($props['height'] * $this->settings['svgWidth']) / $props['width'];
+
+            $processingInstructions = [
+                'width' => $this->settings['svgWidth'],
+                'height' => $svgHeight,
+            ];
+            $imageService = $this->getImageService();
+            $processedImageSVG = $imageService->applyProcessingInstructions($processedImage, $processingInstructions);
+
+            $fileLink = Environment::getPublicPath() . $imageService->getImageUri($processedImageSVG);
+
+            // remove EXIF and get img-data
+            $tmpFileLink = Environment::getPublicPath() . '/fileadmin/_processed_/ps_tmp.' . $imageExtension;
+            $this->removeExif($fileLink, $tmpFileLink);
+            $tmpData = file_get_contents($tmpFileLink);
+
+            $svgImage = 'data:image/' . $imageExtension . ';base64,' . base64_encode($tmpData);
+        }
+        return $svgImage;
+    }
 
     /**
      * taken from https://stackoverflow.com/questions/3614925/remove-exif-data-from-jpg-using-php/38862429 [Dmitry Bugrov]

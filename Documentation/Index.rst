@@ -78,5 +78,8 @@ ChangeLog
 1.2.2
 =====
 - emonf for TER
+1.2.3
+=====
+- emonf for TER, bugfix in constants, settings-check for file-extensions
 
 
