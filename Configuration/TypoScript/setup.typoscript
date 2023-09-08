@@ -1,0 +1,71 @@
+# override fluid_styled_content
+# ======================================================================================================================
+lib.contentElement {
+    templateRootPaths.1 = EXT:photoswipe/Resources/Private/Templates/Fluid/
+    partialRootPaths.1 = EXT:photoswipe/Resources/Private/Partials/Fluid/
+    layoutRootPaths.1 = EXT:photoswipe/Resources/Private/Layouts/Fluid/
+}
+
+
+# EXT:photoswipe - settings & html
+# ======================================================================================================================
+page = PAGE
+page {
+    typeNum = 0
+
+    includeCSSLibs {
+        cssPhotoswipe = {$plugin.tx_photoswipe.settings.cssPhotoswipe}
+        cssPhotoswipeSkin = {$plugin.tx_photoswipe.settings.cssPhotoswipeSkin}
+    }
+
+    includeJSFooterlibs {
+        jsPhotoswipe = {$plugin.tx_photoswipe.settings.jsPhotoswipe}
+        jsPhotoswipeUi = {$plugin.tx_photoswipe.settings.jsPhotoswipeUi}
+        jsPhotoswipeInit = {$plugin.tx_photoswipe.settings.jsPhotoswipeInit}
+    }
+
+    # write photoswipe html template in html-body
+    99 = FLUIDTEMPLATE
+    99 {
+        layoutRootPaths {
+            0 = EXT:photoswipe/Resources/Private/Layouts
+            1 = {$plugin.tx_photoswipe.view.layoutRootPath}
+        }
+        templateName = PhotoSwipe
+        templateRootPaths {
+            0 = EXT:photoswipe/Resources/Private/Templates
+            1 = {$plugin.tx_photoswipe.view.templateRootPath}
+        }
+        settings {
+            initClasses = {$plugin.tx_photoswipe.settings.initClasses}
+            shareButton = {$plugin.tx_photoswipe.settings.shareButton}
+        }
+    }
+}
+
+# add data-size attr to image-link
+# ======================================================================================================================
+lib.contentElement.settings.media.popup.linkParams{
+    ATagParams.dataWrap = class="{$styles.content.textmedia.linkWrap.lightboxCssClass}" rel="{$styles.content.textmedia.linkWrap.lightboxRelAttribute}" data-size="{file:current:width}x{file:current:height}"
+}
+
+# constants
+# ======================================================================================================================
+plugin.tx_photoswipe{
+    view {
+        layoutRootPath = {$plugin.tx_photoswipe.view.layoutRootPath}
+        templateRootPath = {$plugin.tx_photoswipe.view.templateRootPath}
+    }
+    settings {
+        imageExtensions = {$plugin.tx_photoswipe.settings.imageExtensions}
+        initClasses = {$plugin.tx_photoswipe.settings.initClasses}
+        shareButton = {$plugin.tx_photoswipe.settings.shareButton}
+        svgWidth = {$plugin.tx_photoswipe.settings.svgWidth}
+        cssPhotoswipe = {$plugin.tx_photoswipe.settings.cssPhotoswipe}
+        cssPhotoswipeSkin = {$plugin.tx_photoswipe.settings.cssPhotoswipeSkin}
+        jsPhotoswipe = {$plugin.tx_photoswipe.settings.jsPhotoswipe}
+        jsPhotoswipeUi = {$plugin.tx_photoswipe.settings.jsPhotoswipeUi}
+        jsPhotoswipeInit =  {$plugin.tx_photoswipe.settings.jsPhotoswipeInit}
+    }
+}
+
