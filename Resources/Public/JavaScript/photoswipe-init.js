@@ -60,6 +60,9 @@ let initPhotoSwipeFromDOM = function (gallerySelector) {
     // triggers when user clicks on thumbnail
     let onThumbnailsClick = function (e) {
         e = e || window.event;
+        if(e.target.tagName == "FIGCAPTION" || e.target.tagName == "A"){
+            return;
+        }
         e.preventDefault ? e.preventDefault() : e.returnValue = false;
 
         let eTarget = e.target || e.srcElement;
