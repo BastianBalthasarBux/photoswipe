@@ -13,18 +13,11 @@ use TYPO3\CMS\Extbase\Service\ImageService;
 
 class ImageService64
 {
-    protected FrontendConfigurationManager $frontendConfigurationManager;
-
     protected array $settings;
-
-    public function injectFrontendConfigurationManager(FrontendConfigurationManager $fcm)
-    {
-        $this->frontendConfigurationManager = $fcm;
-    }
 
     public function getBase64Preview(ProcessedFile $processedImage): string
     {
-        $this->settings = $this->frontendConfigurationManager->getTypoScriptSetup()['plugin.']['tx_photoswipe.']['settings.'];
+        $this->settings = $this->getFrontendConfigurationManager()->getTypoScriptSetup()['plugin.']['tx_photoswipe.']['settings.'];
         $imageExtension = strtolower($processedImage->getExtension());
         $allowedImageExtensions = explode(',', strtolower($this->settings['imageExtensions']));
         $svgImage = 'data:image/file-extensions-not-supported;';
@@ -80,11 +73,13 @@ class ImageService64
         fclose($fd_in);
     }
 
-    /**
-     * @return SingletonInterface|ImageService|null
-     */
-    protected function getImageService()
+    protected function getImageService():SingletonInterface|ImageService|null
     {
         return GeneralUtility::makeInstance(ImageService::class);
+    }
+
+    protected function getFrontendConfigurationManager()
+    {
+        return GeneralUtility::makeInstance(FrontendConfigurationManager::class);
     }
 }
