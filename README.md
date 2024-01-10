@@ -94,3 +94,4 @@ add arrows in the zoom-view.
 - 1.2.0 - Bugfix: image link with special chars, Feature: new psw-version 4.4.1
 - 1.2.1 - 1.2.2 Documentation update, version emconf
 - 1.2.3 - 1.2.4 Bugfixes, new PHP version
+- 1.2.5 - 1.2.6 TYPO3 v12
