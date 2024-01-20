@@ -1,0 +1,19 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Tei\PhotoSwipe\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
+    
+  Tei\PhotoSwipe\LinkHandler\PhotoSwipeLinkHandler:
+    shared: false
+    public: true
+
+  Tei\PhotoSwipe\Backend\EventListener\LinkEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'photoswipe/backend/modify-link-explanation'
+

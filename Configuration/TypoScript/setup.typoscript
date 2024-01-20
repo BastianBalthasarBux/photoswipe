@@ -7,47 +7,31 @@ lib.contentElement {
 }
 
 
-# EXT:photoswipe - settings & html
+# EXT:photoswipe - assets
 # ======================================================================================================================
 page = PAGE
 page {
-    typeNum = 0
-
     includeCSSLibs {
         cssPhotoswipe = {$plugin.tx_photoswipe.settings.cssPhotoswipe}
-        cssPhotoswipeSkin = {$plugin.tx_photoswipe.settings.cssPhotoswipeSkin}
     }
-
     includeJSFooterlibs {
-        jsPhotoswipe = {$plugin.tx_photoswipe.settings.jsPhotoswipe}
-        jsPhotoswipeUi = {$plugin.tx_photoswipe.settings.jsPhotoswipeUi}
         jsPhotoswipeInit = {$plugin.tx_photoswipe.settings.jsPhotoswipeInit}
-    }
-
-    # write photoswipe html template in html-body
-    99 = FLUIDTEMPLATE
-    99 {
-        layoutRootPaths {
-            0 = EXT:photoswipe/Resources/Private/Layouts
-            1 = {$plugin.tx_photoswipe.view.layoutRootPath}
-        }
-        templateName = PhotoSwipe
-        templateRootPaths {
-            0 = EXT:photoswipe/Resources/Private/Templates
-            1 = {$plugin.tx_photoswipe.view.templateRootPath}
-        }
-        settings {
-            initClasses = {$plugin.tx_photoswipe.settings.initClasses}
-            shareButton = {$plugin.tx_photoswipe.settings.shareButton}
-        }
+        jsPhotoswipeInit.type = module
     }
 }
+
 
 # add data-size attr to image-link
 # ======================================================================================================================
 lib.contentElement.settings.media.popup.linkParams{
-    ATagParams.dataWrap = class="{$styles.content.textmedia.linkWrap.lightboxCssClass}" rel="{$styles.content.textmedia.linkWrap.lightboxRelAttribute}" data-size="{file:current:width}x{file:current:height}"
+    #ATagParams.dataWrap = data-ispsw-img="1" data-pswp-width="{file:current:width}" data-pswp-height="{file:current:height}"
+
+    ATagParams.cObject = USER
+    ATagParams.cObject {
+        userFunc = Tei\PhotoSwipe\Service\ATagParams->set
+    }
 }
+
 
 # constants
 # ======================================================================================================================
@@ -59,13 +43,8 @@ plugin.tx_photoswipe{
     settings {
         imageExtensions = {$plugin.tx_photoswipe.settings.imageExtensions}
         initClasses = {$plugin.tx_photoswipe.settings.initClasses}
-        shareButton = {$plugin.tx_photoswipe.settings.shareButton}
         svgWidth = {$plugin.tx_photoswipe.settings.svgWidth}
         cssPhotoswipe = {$plugin.tx_photoswipe.settings.cssPhotoswipe}
-        cssPhotoswipeSkin = {$plugin.tx_photoswipe.settings.cssPhotoswipeSkin}
-        jsPhotoswipe = {$plugin.tx_photoswipe.settings.jsPhotoswipe}
-        jsPhotoswipeUi = {$plugin.tx_photoswipe.settings.jsPhotoswipeUi}
         jsPhotoswipeInit =  {$plugin.tx_photoswipe.settings.jsPhotoswipeInit}
     }
 }
-

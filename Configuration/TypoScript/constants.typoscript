@@ -13,20 +13,10 @@ plugin.tx_photoswipe {
         imageExtensions = jpg,jpeg,png,bmp
         # cat=plugin.tx_photoswipe/config; type=string; label=PhotoSwipe css wrapper-classes to be initialized (comma separated)
         initClasses = ce-gallery
-        # cat=plugin.tx_photoswipe/config; type=boolean; label=Show Share Button
-        shareButton = true
         # cat=plugin.tx_photoswipe/config; type=int[1-500]; label=Svg width in px
         svgWidth= 10
-
         # cat=plugin.tx_photoswipe/file; type=string; label=Path to CSS file
-        cssPhotoswipe = EXT:photoswipe/Resources/Public/Css/photoswipe.min.css
-        # cat=plugin.tx_photoswipe/file; type=string; label=Path to CSS-skin file
-        cssPhotoswipeSkin = EXT:photoswipe/Resources/Public/Css/photoswipe-default-skin.min.css
-
-        # cat=plugin.tx_photoswipe/file; type=string; label=Path to Photoswipe javascript file (default v4.1.3)
-        jsPhotoswipe = EXT:photoswipe/Resources/Public/JavaScript/photoswipe.min.js
-        # cat=plugin.tx_photoswipe/file; type=string; label=Path to Photoswipe-UI javascript file
-        jsPhotoswipeUi = EXT:photoswipe/Resources/Public/JavaScript/photoswipe-ui-default.min.js
+        cssPhotoswipe = EXT:photoswipe/Resources/Public/Css/photoswipe.css
         # cat=plugin.tx_photoswipe/file; type=string; label=Path to Photoswipe-Init javascript file
         jsPhotoswipeInit = EXT:photoswipe/Resources/Public/JavaScript/photoswipe-init.js
     }
@@ -35,5 +25,4 @@ plugin.tx_photoswipe {
 
 styles.content.textmedia.linkWrap {
     lightboxEnabled = 1
-    lightboxRelAttribute = photoswipe_{field:uid}
 }

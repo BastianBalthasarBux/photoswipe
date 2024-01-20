@@ -7,16 +7,16 @@
 photoswipe
 
 **Version:**
-1.2.2
+2.0.0
 
 **Language:**
 en
 
 **Description:**
-Adds the [photoswipe.com](http://photoswipe.com/) JavaScript plugin (version 4.4.1 https://github.com/andi34/PhotoSwipe) as default for image enlargement
+Adds the [photoswipe.com](http://photoswipe.com/) JavaScript plugin (version 5.4.2 https://github.com/dimsemenov/photoswipe) as default for image enlargement
 
 **Keywords:**
-gallery, photoswipe, lightbox, zoom
+gallery, photoswipe, lightbox, layer, zoom
 
 **Copyright:**
 2020
@@ -47,27 +47,17 @@ The content of this document is related to TYPO3, a GNU/GPL CMS/Framework availa
 3. Configure extension if required (see section below)
 
 ## Configuration
-You can overwrite all files in the Constant Editor. Besides that you will find a checkbox to
-enable a share-button for social media and the setting for the css-wrapper to enable photoswipe in it.
-Please note that the extension itself uses TS-setup 'page.99' to add its html-template at the bottom of the page.
-It also adds a parameter 'data-size' in TYPO3's media link in TypoScript/setup.txt
-```
-# add data-size attr to image-link
-lib.contentElement.settings.media.popup.linkParams{
-    ATagParams.dataWrap = class="{$styles.content.textmedia.linkWrap.lightboxCssClass}" rel="{$styles.content.textmedia.linkWrap.lightboxRelAttribute}" data-size="{file:current:width}x{file:current:height}"
-}
-```
-You don't have to enable lightbox-features in TYPO3's constant editor. The extension will do this for you.
+You can overwrite all files in the Constant Editor. 
 
 #### Photoswipe in your HTML:
-The default setting for initializing photoswipe is by TYPO3's default css-class "ce-gallery". You can add your own classes
-in the constant editor. Your HTML has to look like this:
+The default setting for initializing photoswipe is by TYPO3's default css-class "ce-gallery". 
+Your HTML has to look like this:
 ```
 <someHtmlEl class="your-wrapper-class">
     [... code / parent nodes]
         <figure>
-            <a href="big image" data-size="[width]X[height]">
-                <img rel="potoswipe_[whatever]" [opt: title='used as caption']/>
+            <a href="big image" data-ispsw-img="1" data-pswp-width="800" data-pswp-height="500">
+                <img [opt: title='used as caption']/>
             </a>
             [opt: <figcaption>prefered as caption</figcaption>]
         </figure>
@@ -79,6 +69,9 @@ in the constant editor. Your HTML has to look like this:
 Just use the regular "Enlarge on Click" checkbox in the backend. If you have more than one image, the extension will
 add arrows in the zoom-view.
 
+## Layer
+After installing photoswipe, TYPO3 will offer you a new link-type "Layer". You can choose between pages (iFrame) and 
+ content elements (innerHTML). 
 
 ## ChangeLog
 
@@ -96,3 +89,4 @@ add arrows in the zoom-view.
 - 1.2.3 - 1.2.4 Bugfixes, new PHP version
 - 1.2.5 - 1.2.6 TYPO3 v12
 - 1.2.7 - Bugfix: link in caption
+- 2.0.0 - PhotoSwipe 5.4.2, Layer in LinkWizard, TYPO3 v12 only

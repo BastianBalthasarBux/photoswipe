@@ -3,11 +3,11 @@
   "type": "typo3-cms-extension",
   "description": "TYPO3 PhotoSwipe-Plugin for native image-enlargement",
   "license": "GPL-2.0-or-later",
-  "version": "1.2.7",
+  "version": "2.0.0",
   "require": {
     "php": "^7.4 || ^8.0 || ^8.1 || ^8.2",
-    "typo3/cms-backend": "^9.5  || ^10.4 || ^11.5 || ^12.4",
-    "typo3/cms-core": "^9.5 || ^10.4 || ^11.5 || ^12.4"
+    "typo3/cms-backend": "^12.4",
+    "typo3/cms-core": "^12.4"
   },
   "authors": [
     {
@@ -24,7 +24,8 @@
     "extension",
     "photoswipe",
     "lightbox",
-    "image zoom"
+    "image zoom",
+    "layer"
   ],
   "support": {
     "issues": "https://github.com/j0nnybrav079/photoswipe/issues"
