@@ -7,25 +7,9 @@ lib.contentElement {
 }
 
 
-# EXT:photoswipe - assets
-# ======================================================================================================================
-page = PAGE
-page {
-    includeCSSLibs {
-        cssPhotoswipe = {$plugin.tx_photoswipe.settings.cssPhotoswipe}
-    }
-    includeJSFooterlibs {
-        jsPhotoswipeInit = {$plugin.tx_photoswipe.settings.jsPhotoswipeInit}
-        jsPhotoswipeInit.type = module
-    }
-}
-
-
 # add data-size attr to image-link
 # ======================================================================================================================
 lib.contentElement.settings.media.popup.linkParams{
-    #ATagParams.dataWrap = data-ispsw-img="1" data-pswp-width="{file:current:width}" data-pswp-height="{file:current:height}"
-
     ATagParams.cObject = USER
     ATagParams.cObject {
         userFunc = Tei\PhotoSwipe\Service\ATagParams->set
@@ -42,9 +26,6 @@ plugin.tx_photoswipe{
     }
     settings {
         imageExtensions = {$plugin.tx_photoswipe.settings.imageExtensions}
-        initClasses = {$plugin.tx_photoswipe.settings.initClasses}
         svgWidth = {$plugin.tx_photoswipe.settings.svgWidth}
-        cssPhotoswipe = {$plugin.tx_photoswipe.settings.cssPhotoswipe}
-        jsPhotoswipeInit =  {$plugin.tx_photoswipe.settings.jsPhotoswipeInit}
     }
 }

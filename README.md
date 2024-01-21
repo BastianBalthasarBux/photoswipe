@@ -91,3 +91,4 @@ After installing photoswipe, TYPO3 will offer you a new link-type "Layer". You c
 - 1.2.7 - Bugfix: link in caption
 - 2.0.0 - PhotoSwipe 5.4.2, Layer in LinkWizard, TYPO3 v12 only
 - 2.0.1 - Bugfix: CSS
+- 2.0.2 - Bugfix: Javascript is merged without module-attribute
