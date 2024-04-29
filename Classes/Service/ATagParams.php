@@ -30,6 +30,14 @@ final class ATagParams
             ? $fileCurrent->getProperties()
             : $this->getCroppedSize($this->cObj->getCurrentFile(), $fileCurrent->getReferenceProperties()['crop']);
 
+        // fallback to original file if dimensions are still null for unknown reason
+        // see https://github.com/j0nnybrav079/photoswipe/issues/10
+        if ((int)$properties['width'] === 0 || $properties['height'] === 0) {
+            $originalFileProperties = $fileCurrent->getOriginalFile()->getProperties();
+            $properties['width'] = $originalFileProperties['width'];
+            $properties['height'] = $originalFileProperties['height'];
+        }
+
         return sprintf('data-ispsw-img="1" data-pswp-width="%s" data-pswp-height="%s"',
             $properties['width'],
             $properties['height']
