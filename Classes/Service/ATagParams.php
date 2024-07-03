@@ -22,7 +22,7 @@ final class ATagParams
     public function set(string $content, array $conf): string
     {
         $fileCurrent = $this->cObj->getCurrentFile();
-        $cropArea = json_decode($fileCurrent->getReferenceProperties()['crop'])->default->cropArea;
+        $cropArea = json_decode($fileCurrent->getReferenceProperties()['crop'])->default->cropArea ?? null;
         $cropWidth = $cropArea->width ?? null;
         $cropHeight = $cropArea->height ?? null;
 
