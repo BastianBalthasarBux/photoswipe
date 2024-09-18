@@ -6,9 +6,6 @@
 **Extension key:**
 photoswipe
 
-**Version:**
-2.0.0
-
 **Language:**
 en
 
@@ -19,7 +16,7 @@ Adds the [photoswipe.com](http://photoswipe.com/) JavaScript plugin (version 5.4
 gallery, photoswipe, lightbox, layer, zoom
 
 **Copyright:**
-2020
+2024
 
 **Author:**
 Tobias Eichelberger
@@ -72,23 +69,3 @@ add arrows in the zoom-view.
 ## Layer
 After installing photoswipe, TYPO3 will offer you a new link-type "Layer". You can choose between pages (iFrame) and 
  content elements (innerHTML). 
-
-## ChangeLog
-
-- 1.0.0 - Initial release of Extension
-- 1.0.1 - 1.0.4 - struggling with composer.json
-- 1.0.5 - Bugfix: Always opened first image in gallery
-- 1.0.6 - Bugfix: share button, added config for css-wrapper class
-- 1.0.7 - Bugfix: composer.json for packagist
-- 1.1.0 - Feature: added base64 support for lazy loading. Just use the checkbox "lazy loading" next to "enlarge image".
-- 1.1.1 - Ready for TYPO3 11
-- 1.1.2 - Bugfix: Composer
-- 1.1.3 - Bugfix: TCA in overrides
-- 1.2.0 - Bugfix: image link with special chars, Feature: new psw-version 4.4.1
-- 1.2.1 - 1.2.2 Documentation update, version emconf
-- 1.2.3 - 1.2.4 Bugfixes, new PHP version
-- 1.2.5 - 1.2.6 TYPO3 v12
-- 1.2.7 - Bugfix: link in caption
-- 2.0.0 - PhotoSwipe 5.4.2, Layer in LinkWizard, TYPO3 v12 only
-- 2.0.1 - Bugfix: CSS
-- 2.0.2 - Bugfix: Javascript is merged without module-attribute
