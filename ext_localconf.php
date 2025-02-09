@@ -1,7 +1,6 @@
 <?php
-defined('TYPO3') || defined('TYPO3_MODE') || die();
+defined('TYPO3') || die();
 
-use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Page\AssetCollector;
 
