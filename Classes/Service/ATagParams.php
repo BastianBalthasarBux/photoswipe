@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tei\PhotoSwipe\Service;
 
+use TYPO3\CMS\Core\Imaging\ImageManipulation\Area;
 use TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariantCollection;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Service\ImageService;
@@ -21,35 +22,44 @@ final class ATagParams
 
     public function set(string $content, array $conf): string
     {
-        $fileCurrent = $this->cObj->getCurrentFile();
-        $cropArea = json_decode($fileCurrent->getReferenceProperties()['crop'])->default->cropArea ?? null;
-        $cropWidth = $cropArea->width ?? null;
-        $cropHeight = $cropArea->height ?? null;
+        $file = $this->cObj->getCurrentFile();
 
-        $properties = 1 === $cropWidth && 1 === $cropHeight
-            ? $fileCurrent->getProperties()
-            : $this->getCroppedSize($this->cObj->getCurrentFile(), $fileCurrent->getReferenceProperties()['crop']);
+        ['width' => $width, 'height' => $height] = $this->getFileProperties($file);
 
         // fallback to original file if dimensions are still null for unknown reason
         // see https://github.com/j0nnybrav079/photoswipe/issues/10
-        if ((int)$properties['width'] === 0 || $properties['height'] === 0) {
-            $originalFileProperties = $fileCurrent->getOriginalFile()->getProperties();
-            $properties['width'] = $originalFileProperties['width'];
-            $properties['height'] = $originalFileProperties['height'];
+        if (((int)$width === 0) || ((int)$height === 0)) {
+            ['width' => $width, 'height' => $height] = $file->getOriginalFile()->getProperties();
         }
 
-        return sprintf('data-ispsw-img="1" data-pswp-width="%s" data-pswp-height="%s"',
-            $properties['width'],
-            $properties['height']
+        return sprintf(
+            'data-ispsw-img="1" data-pswp-width="%s" data-pswp-height="%s"',
+            $width,
+            $height,
         );
     }
 
-    public function getCroppedSize($file, $crop): array
+    private function getFileProperties($file): array
     {
-        $cropArea = CropVariantCollection::create($crop)->getCropArea('default'); // cropVariant
+        $crop = $file->getReferenceProperties()['crop'];
+
+        if ($crop === null) {
+            // No crop applied, so just return properties of original file.
+            return $file->getProperties();
+        }
+
+        // File (reference) is cropped.
+        $cropArea = CropVariantCollection::create($crop)->getCropArea('default');
+
+        return $cropArea->isEmpty() ? $file->getProperties() : $this->getCroppedFileProperties($file, $cropArea);
+    }
+
+    private function getCroppedFileProperties($file, Area $cropArea): array
+    {
         $processingInstructions = [
             'crop' => $cropArea->isEmpty() ? null : $cropArea->makeAbsoluteBasedOnFile($file)
         ];
+
         $imageService = GeneralUtility::makeInstance(ImageService::class);
 
         return $imageService->applyProcessingInstructions($file, $processingInstructions)->getProperties();
