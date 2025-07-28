@@ -59,7 +59,11 @@ const imageLightbox = new PhotoSwipeLightbox({
 const captionPlugin = new PhotoSwipeDynamicCaption(imageLightbox, {
     type: 'auto',
     captionContent: (slide) => {
-        return '<strong>' + slide.data.element.querySelector('img').getAttribute('title') + '</strong><br>' + slide.data.element.querySelector('img').getAttribute('alt');
+        let captionTitle = '';
+        if (!!slide.data.element.querySelector('img').getAttribute('title')) {
+            captionTitle = '<strong>' + slide.data.element.querySelector('img').getAttribute('title') + '</strong><br>';
+        }
+        return captionTitle + slide.data.element.querySelector('img').getAttribute('alt');
     }
 });
 imageLightbox.init();
