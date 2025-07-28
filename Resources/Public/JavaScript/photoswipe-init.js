@@ -1,5 +1,7 @@
 import PhotoSwipeLightbox from './photoswipe-lightbox.esm.js';
 
+import PhotoSwipeDynamicCaption from './photoswipe-dynamic-caption-plugin.esm.js';
+
 /**
  * lightbox for linkWizard
  * @type {PhotoSwipeLightbox}
@@ -53,6 +55,12 @@ const imageLightbox = new PhotoSwipeLightbox({
     gallery: '.ce-gallery',
     children: '[data-ispsw-img]',
     pswpModule: () => import('./photoswipe.esm.js')
+});
+const captionPlugin = new PhotoSwipeDynamicCaption(imageLightbox, {
+    type: 'auto',
+    captionContent: (slide) => {
+        return '<strong>' + slide.data.element.querySelector('img').getAttribute('title') + '</strong><br>' + slide.data.element.querySelector('img').getAttribute('alt');
+    }
 });
 imageLightbox.init();
 
