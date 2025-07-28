@@ -23,4 +23,7 @@ use TYPO3\CMS\Core\Page\AssetCollector;
     $assetController->addStyleSheet(
         'photoswipe',
         'EXT:photoswipe/Resources/Public/Css/photoswipe.css');
+    $assetController->addStyleSheet(
+        'photoswipe-dynamic-caption',
+        'EXT:photoswipe/Resources/Public/Css/photoswipe-dynamic-caption-plugin.css');
 })();
