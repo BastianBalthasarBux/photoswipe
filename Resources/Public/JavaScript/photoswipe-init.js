@@ -60,10 +60,18 @@ const captionPlugin = new PhotoSwipeDynamicCaption(imageLightbox, {
     type: 'auto',
     captionContent: (slide) => {
         let captionTitle = '';
-        if (!!slide.data.element.querySelector('img').getAttribute('title')) {
-            captionTitle = '<strong>' + slide.data.element.querySelector('img').getAttribute('title') + '</strong><br>';
+        let titleTxt = '';
+        let altTxt = '';
+        try {
+            titleTxt = slide.data.element.querySelector('img').getAttribute('title');
+            altTxt = slide.data.element.querySelector('img').getAttribute('alt')
+        } catch (e) {
+            // fallback do nothing for now if no img tag (e.g. inline svg).
         }
-        return captionTitle + slide.data.element.querySelector('img').getAttribute('alt');
+        if (!!titleTxt) {
+            captionTitle = '<strong>' + titleTxt + '</strong><br>';
+        }
+        return captionTitle + altTxt;
     }
 });
 imageLightbox.init();
